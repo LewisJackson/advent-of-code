@@ -15,28 +15,30 @@ async function rockPaperScissors(): Promise<Number> {
 
     let score = 0;
     for (let i = 0; i < parsedData.length; i++) {
-        const char = parsedData[i];
+        const getMoves = parsedData[i];
+        const botMove = getMoves.charAt(0);
+        const myMove = getMoves.charAt(1);
 
         // win
-        if (char.charAt(1) === 'X' && char.charAt(0) === 'C') {
+        if (myMove === 'X' && botMove === 'C') {
             score += win;
-        } else if (char.charAt(1) === 'Y' && char.charAt(0) === 'A') {
+        } else if (myMove === 'Y' && botMove === 'A') {
             score += win;
-        } else if (char.charAt(1) === 'Z' && char.charAt(0) === 'B') {
+        } else if (myMove === 'Z' && botMove === 'B') {
             score += win;
         }
 
         // draw
-        if (char.charAt(1) === 'X' && char.charAt(0) === 'A') {
+        if (myMove === 'X' && botMove === 'A') {
             score += draw;
-        } else if (char.charAt(1) === 'Y' && char.charAt(0) === 'B') {
+        } else if (myMove === 'Y' && botMove === 'B') {
             score += draw;
-        } else if (char.charAt(1) === 'Z' && char.charAt(0) === 'C') {
+        } else if (myMove === 'Z' && botMove === 'C') {
             score += draw;
         }
 
-        const myChar = parsedData[i].charAt(1) as keyof typeof rockPaperScissorsObj;
-        score += rockPaperScissorsObj[myChar];
+        const movePoints = myMove as keyof typeof rockPaperScissorsObj;
+        score += rockPaperScissorsObj[movePoints];
     }
     return score;
 }

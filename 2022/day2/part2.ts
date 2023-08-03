@@ -15,37 +15,37 @@ async function rockPaperScissors(): Promise<Number> {
 
     let score = 0;
     for (let i = 0; i < parsedData.length; i++) {
-        const getChar = parsedData[i];
-        const botChar = getChar.charAt(0);
-        const decision = getChar.charAt(1);
+        const getMoves = parsedData[i];
+        const botMove = getMoves.charAt(0);
+        const decisionMove = getMoves.charAt(1);
 
-        const movePoints = parsedData[i].charAt(0) as keyof typeof rockPaperScissorsObj;
-        const choice = rockPaperScissorsObj[movePoints];
+        const movePoints = botMove as keyof typeof rockPaperScissorsObj;
+        const copyMove = rockPaperScissorsObj[movePoints];
 
-        if (botChar === 'A') {
-            if (decision === 'Y') {
-                score += draw + choice;
-            } else if (decision === 'Z') {
+        if (botMove === 'A') {
+            if (decisionMove === 'Y') {
+                score += draw + copyMove;
+            } else if (decisionMove === 'Z') {
                 score += win + rockPaperScissorsObj['B'];
             } else {
                 score += rockPaperScissorsObj['C'];
             }
         }
 
-        if (botChar === 'B') {
-            if (decision === 'Y') {
-                score += draw + choice;
-            } else if (decision === 'Z') {
+        if (botMove === 'B') {
+            if (decisionMove === 'Y') {
+                score += draw + copyMove;
+            } else if (decisionMove === 'Z') {
                 score += win + rockPaperScissorsObj['C'];
             } else {
                 score += rockPaperScissorsObj['A'];
             }
         }
 
-        if (botChar === 'C') {
-            if (decision === 'Y') {
-                score += draw + choice;
-            } else if (decision === 'Z') {
+        if (botMove === 'C') {
+            if (decisionMove === 'Y') {
+                score += draw + copyMove;
+            } else if (decisionMove === 'Z') {
                 score += win + rockPaperScissorsObj['A'];
             } else {
                 score += rockPaperScissorsObj['B'];
